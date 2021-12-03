@@ -1,0 +1,90 @@
+<%- include("partials/loginHeader"); -%>
+
+
+
+    <div class=" container checkout-container">
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+
+                <h1><em>CHECKOUT POINT</em>
+                <span class="span1"></span></h1>
+
+                <h4>Your Total Expence is : Rs.<%=total %>.00</h4>
+                <% include ./partials/messages %>
+                <hr>
+
+                
+                <form class="checkout" action="/checkout" method="POST" id="checkout-form">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="labels" for="firstName">FirstName:</label>
+                                <input type="text"  name="firstName" class="form-control" required >
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="labels" for="lastName">LastName:</label>
+                                <input type="text"  name="lastName" class="form-control" required >
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="labels" for="address">Address:</label>
+                                <textarea name="address" class="form-control" rows="5"></textarea>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label  class="labels" for="phone">Phone No.:</label>
+                                <input type="tel" name="phone" class="form-control" pattern="[0-9]{10}" required>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label  class="labels" for="cardHolder">Card Holder Name:</label>
+                                <input type="text"  name="cardHolder" class="form-control" required  >
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label  class="labels" for="creditCardNo">Credit Card No:</label>
+                                <input type="tel"  name="creditCardNo" class="form-control"
+                                placeholder ="1234-5678-9123-4567" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" required >
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label  class="labels" for="cardExpiryYear">Expiration (Month & Year): </label>
+                                <input type="month" name="cardExpiryYear" class="form-control" required>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label  class="labels" for="cardCvv">CVV No.:</label>
+                                <input type="password"  name="cardCvv" class="form-control"
+                                placeholder="security code " pattern="[0-9]{3}" required >
+                            </div>
+                        </div>
+
+    
+                    </div>
+    
+                    <button type="submit" class="btn btn-success">Buy Now</button>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+
+ 
+
+    <script type="text/javascript"src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript" src="/javascript/checkout.js" ></script>

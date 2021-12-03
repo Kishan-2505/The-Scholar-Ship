@@ -1,0 +1,74 @@
+<%- include("partials/header") -%>
+<!--heading-->
+<div class="heading">
+    <h1><b> <em><%= title %></em></b>
+      <span class="span1"></span>
+    </h1>
+  </div>
+  
+  <section id="testimonials">
+    <div>
+    <!--images-->
+    <div class="row">
+      <% products.forEach(function(product){ %>
+  
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 border-light">
+          <div class="imageContainer">
+            <img src="<%= product.image %>" class=" card-img-top" style="height:434px">
+            <div class="hoverText">
+              <a href="/addToCart/<%= product._id %>" title="Add To Cart" role="button"><button
+                  class="btn hoverButton"><i class="icon1 fas fa-cart-plus"></i></button>
+              </a>
+              <a href="/addToWishlist/<%= product._id %>" title="Add To Wishlist" role="button"><button
+                  class="btn hoverButton"><i class="icon1 fas fa-heart"></i></button>
+              </a>
+             <button class="btn hoverButton modalbtn" href="#modal<%= product._id %>" title="Quick View">
+               <i class="icon1 fas fa-eye"></i>
+             </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.title %> </h5>
+            <p class="card-text">Price: <b style="text-decoration: line-through; padding-right: 5px ; color:#bbb3b3;"><%= product.mrp %></b><%= product.price %>.00</p>
+          </div>
+        </div>
+      </div>
+  
+      <div id="modal<%= product._id %>" class="modal">
+        <div class="product-view">
+          <div class="close-button">X</div>
+          <div class="prduct-image">
+            <img src="<%= product.image %>">
+          </div>
+          <div class="prduct-desc">
+            <h2><%= product.title %></h2>
+            <h5><b>Author:</b> <%= product.pub_auth %></h5>
+            <h5><b>Publisher: </b> <%= product.publisher %></h5>
+            <h5><b>Product Code: </b> <%= product._id %></h5>            
+            <h5><b> Description :</b><%= product.description %></h5>
+            <p><b>Language:</b> <%= product.language %></p>
+            <p><b>Category:</b> <%= product.category %></p>
+            <p><b>Provided by:</b> <%= product.name %></p>
+  
+            <div class="price">
+              <h4 class="old-price" >Price: <b><%= product.mrp %></b> </h4>
+              <h4 class="old-price"><%= product.price %>.00</h4>
+            </div>
+  
+  
+            <br>
+            <a href="/addTocart/<%= product._id %>" class=" btn1 btn btn-dark" title="Add To Cart" role="button"><i
+                class="icon1 fas fa-cart-plus"></i>Add to Cart</a>
+            <a href="/addToWishlist/<%= product._id %>" class=" btn1 btn btn-dark" title="Add To Cart" role="button"><i
+                class="icon1 fas fa-heart"></i>Add to Wishlist</a>
+            <p><b>Shipping:</b>Dispatched within 2-3 working days.</p>
+          </div>
+        </div>
+      </div>
+  
+      <% }) %>
+    </div>
+  
+  
+<%- include("partials/footer") -%>

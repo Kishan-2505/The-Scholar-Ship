@@ -1,0 +1,179 @@
+<%- include("partials/loginHeader"); -%>
+
+
+
+<div class=" container ">
+  <div class="card">
+    <div class="card-header">
+      <center>
+        <h1><em>Sell book from Home</em>
+          <span class="span2"></span></h1>
+      </center>
+    </div>
+    <div class="card-body">
+
+      <form class="" action="/sellBook/addbook" enctype="multipart/form-data" method="POST" >
+        <div class=" row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="title">Title<span style="color: red;">*</span>:</label>
+            <input type="text" name="title" class="form-control" maxlength="35" required>
+          </div>
+        </div>
+
+          <div class="col-lg-12">
+            <div class="form-group">
+              <label class="labels" for="language">Language of Book<span style="color: red;">*</span>:</label>
+              <input type="text" name="language" class="form-control" required>
+            </div>
+          </div>
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="category">Category<span style="color: red;">*</span>:</label>
+            <input list="category" type="text" name="category" class="form-control" placeholder="Select Option"
+              required>
+
+            <datalist id="category">
+              <option value="Novel">
+              <option value="Engineering">
+              <option value="Law">
+              <option value="Medical">
+              <option value="Business">
+              <option value="Arts">
+            </datalist>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="price-type">Price Type<span style="color: red;">*</span>:</label>
+            <input list="price-type" type="text" name="price_type" class="form-control" placeholder="Select Option"
+              required>
+
+            <datalist id="price-type">
+              <option value="Fixed">
+              <option value="Negotiable">
+            </datalist>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="price">Price <span style="color: rgb(168, 167, 167);">₹ only *</span>:</label>
+            <input type="tel" name="price" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="r">Item Condition<span style="color: red;">*</span>:</label>
+            <input list="item-condition" type="text" name="item_condition" class="form-control" placeholder="Select Option" required>
+
+            <datalist id="item-condition">
+              <option value="Used">
+              <option value="New">
+            </datalist>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label>Upload Your File <span style="color: red;">*</span></label>
+            <input name="image" type="file" id="fileName" accept=".jpg,.jpeg,.png"class="form-control" onchange="validateFileType(event)" required>
+            <p>[Only .jpg,.jpeg and .png files are allowd.]</p>
+          </div>
+        </div>  
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="author">Author <span style="color: red">*</span>:</label>
+            <input type="text" name="pub_auth" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="publisher">Publisher <span style="color: red">*</span>:</label>
+            <input type="text" name="publisher" class="form-control" required>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="MRP">Original Price(MRP) <span style="color:red">*</span>:</label>
+            <input type="tel" name="mrp" class="form-control" required>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="pages">No.of pages<span style="color:red">*</span>: </label>
+            <input type="tel" name="pages" class="form-control">
+          </div>
+        </div>
+        
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="description">Description<span style="color:red">*</span>:</label>
+            <textarea name="description" class="form-control" rows="5" maxlength="250" required></textarea>
+            <p>[No more than 250 characters.]</p>
+          </div>
+        </div>
+        
+        <h3 style="padding: 15px;">Personal  Information</h3>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="name">Name/Retaler<span style="color: red;">*</span>:</label>
+            <input type="text" name="name" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="phone_no ">Phone No <span style="color: red;">*</span>:</label>
+            <input type="tel" name="phone_no" class="form-control"  pattern="[0-9]{10}" required>
+          </div>
+        </div>
+
+        
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="address">Address<span style="color:red">*</span>:</label>
+            <textarea name="address" class="form-control" rows="5" required></textarea>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="postalCode">Postal Code<span style="color:red">*</span>:</label>
+            <input type="tel" name="postalCode" maxlength="6" pattern="[0-9]{6}" class="form-control">
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="labels" for="landmark">Landmark<span style="color:red">*</span>:</label>
+            <input type="text" name="landmark"  class="form-control">
+          </div>
+        </div>
+        
+        
+        
+        <div class="container-fluid  justify-content-center">
+            <button type="submit" class="btn btn-success button2">Add Book <i class="fa fa-plus-square" aria-hidden="true"></i></button>  
+            <button type="reset" class="btn btn-danger button2">RE-Enter BOOK Data <i class="fa fa-eraser" aria-hidden="true"></i></button>
+            <a href="/dashboard">
+              <button type="Button" class="btn btn-warning  button2 float-right">Go to Home <i class="fa fa-home" aria-hidden="true"></i></button>
+            </a>
+        </div>
+
+        
+
+      </form>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+  </div>
+</div>
+</div>
+</div>

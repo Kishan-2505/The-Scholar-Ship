@@ -1,0 +1,96 @@
+<%- include("partials/loginHeader") -%>
+
+
+
+ <% if(products && products.length!==0) { %>
+
+    <div class="container-fluid ">
+        <center><h1 class="heading">Your Cart <i class="fa fa-shopping-bag fa-1x text-danger" aria-hidden="true"></i>
+        </h1></center>
+        <table id="cart" class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th style="width:50%">Product</th>
+                    <th style="width:10%">Price</th>
+                    <th style="width:8%">Quantity</th>
+                    <th style="width:8%"></th>
+
+                    <th style="width:22%" class="text-center">Subtotal</th>
+                    <th style="width:10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <% products.forEach(function(product){ %>
+                    <td data-th="Product">
+                        <div class="row">
+                                
+                            <div class="col-sm-3 hidden-xs">
+                                <img src="<%= product.item.image %>" alt="..." class="img-responsive" height="100px" width="100px" />
+                            </div>
+                            <div class="col-sm-9" >
+                                <h4 class="nomargin"><%= product.item.title %></h4>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="Price"><%= product.item.price %></td>
+                    <td colspan="2" data-th="Quantity"> 
+                        <div class="input-group">
+                               <a href="/reduce/<%=product.item._id %> "id="down" class="btn btn-default"  ><span class="glyphicon glyphicon-minus"><i class="fa fa-minus" aria-hidden="true"></i>
+                                </span></a>
+                            <input type="text" id="myNumber" class="form-control input-number" value="<%= product.quantity %>" /> 
+                            <a href="/increase/<%=product.item._id %> "id="down" class="btn btn-default" ><span class="glyphicon glyphicon-minus"><i class="fa fa-plus" aria-hidden="true"></i>
+                            </i>
+                            </span></a>
+                        </div>
+                    </td>
+                    
+                    <td data-th="Subtotal" class="text-center"><%= product.price %></td>
+                    <td class="actions" data-th="">
+                        <a href="/remove/<%= product.item._id %>"class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                    
+            </tr>
+            <%  }); %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="1" class="hidden-xs"></td>
+                    <td colspan="3" class="hidden-xs text-center"><strong><%=totalQuantity %></strong></td>
+                    <td colspan="2" class="hidden-xs text-center"><strong><%=totalPrice %></strong></td>
+                </tr>
+                <tr>
+                    <td><a href="/dashboard" class="btn btn-warning"><i class="fa fa-angle-left"></i>Continue Shopping </a></td>
+                    <td colspan="3" class="hidden-xs"></td>
+                    <td colspan="2"><a href="/checkout" class="btn btn-success btn-block">Checkout<i class="fa fa-angle-right"></i></a></td>
+                </tr>
+            </tfoot>
+        </table>
+    
+    
+    </div>
+    
+ <% } else{ %>
+    <div class="jumbotron centered">
+        <div class="container">
+            <i class="fa fa-shopping-bag fa-5x text-danger" aria-hidden="true"></i>
+
+          <h1 class="display-4"><b><em>feel so Light!!</em> </b> </h1>
+          <p >There's nothing in your bag.Let's add some items. </p>
+          <a href="/wishlist"><button class="btn user-button">ADD ITEMS FROM WISHLIST</button></a>
+        </div>
+      </div>
+     
+ <% } %>
+
+ <script>
+    function up(max) {
+        document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) + 1;
+        
+    }
+    function down(min) {
+        document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) - 1;
+        
+    }
+
+</script>

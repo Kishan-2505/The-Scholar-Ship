@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!---bootstrap cdn-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!--jquery cdn-->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+  <!--googlefonts-->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Raleway:wght@500&display=swap" rel="stylesheet">
+
+  <!--font awesome-->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+
+</head>
+<body>
+  <!-- -----------------------------------   for future use     -----------------------------------------------   -->
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navigation_main">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search">
+              <button class="search-button btn btn-dark my-2 my-sm-0" type="submit"><i class="fa fa-search" title="search"></i></button>
+            </form>
+            <a class="navbar-brand" href="/dashboard">
+              <img class="logo_image logo-position"src="/images/mainpage/logo.png" style=" height:150px; width: 150px">
+            </a>
+            <div class="buttonClass">
+
+              <a href="/wishlist" class="btn btn-dark header_button" role="button"><i class="fas fa-heart"></i>
+
+                <span class="badge badge-pill badge-light"></span>
+              </a>
+                  <a href="/shoppingCart" class="btn btn-dark header_button" role="button"><i class="fas fa-cart-plus"></i>
+                    <span class="badge badge-pill badge-light"></span>
+                </a>
+                <a class="btn btn-dark header_button" href="/users/logout" role="button" >Logout</a><br>
+                <p>Welcome,<br> <%= user.name %></p>
+
+            </div>
+            
+        </nav>
+    </header>
+
+<nav class="navbar navbar-expand-lg navbar-dark navigation_second" id="main_navbar">
+  <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Category
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                <a class="dropdown-item" href="/sellBook/novel">NOVELS</a>
+                <a class="dropdown-item" href="/sellBook/engineering">ENGINEERING</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/sellBook/arts">ARTS</a>
+                <a class="dropdown-item" href="/sellBook/medical">MEDICAL</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/sellBook/law">LAW</a>
+                <a class="dropdown-item" href="/sellBook/business">BUSINESS</a>
+              </div>
+            </li>
+
+          </ul>
+      </div>
+    </div>
+</nav>
+
+

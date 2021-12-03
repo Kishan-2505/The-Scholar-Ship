@@ -1,0 +1,67 @@
+<%- include("partials/loginHeader") -%>
+
+
+
+ <% if(products && products.length!==0) { %>
+
+    <div class="container-fluid ">
+        <center><h1 class="heading">Your Wishlist <i class="icon1 fas fa-heart  fa-1x text-danger"></i></h1></center>
+        <table id="cart" class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th style="width:50%">Product</th>
+                    <th style="width:10%">Price</th>
+                    <th style="width:10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <% products.forEach(function(product){ %>
+                    <td data-th="Product">
+                        <div class="row">
+                                
+                            <div class="col-sm-3 hidden-xs">
+                                <img src="<%= product.item.image %>" alt="..." class="img-responsive" height="170px" width="140px" />
+                            </div>
+                            <div class="col-sm-9" >
+                                <h4 class="nomargin"><%= product.item.title %></h4>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="Price"><%= product.item.price %></td>
+                    <td class="actions" data-th="">
+                        <a href="/add-to-cart/<%= product.item._id %>" class="btn btn-danger btn-sm">Add To Cart</a>
+                        <a href="/removeFromWishlist/<%=product.item._id %>" class="btn btn-dark btn-sm"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    </td>
+               
+            </tr>
+            <%  }); %>
+            </tbody>
+            <tfoot>
+                <center><tr>
+                    <td><a href="/dashboard" class="btn btn-warning"><i class="fa fa-angle-left"></i>Continue Shopping </a></td></center>
+					
+
+				</tr>
+			</center>
+            </tfoot>
+        </table>
+    
+    
+    </div>
+
+ <% } else{ %>
+
+    <div class="jumbotron centered">
+        <div class="container">
+            <i class="fa fa-shopping-bag fa-5x text-danger" aria-hidden="true"></i>
+
+          <h1 class="display-4"><b><em>There's nothing in your wishlist</em> </b> </h1>
+          <h6>want to add something???</h6>
+          <a href="/dashboard"><button class="btn user-button">HOME PAGE</button></a>
+        </div>
+      </div>
+     
+ <% } %>
+
+ 
